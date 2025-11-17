@@ -1,0 +1,259 @@
+/* Multi-Client Page Styles - Tokyo Night Theme */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Host-site dark theme colors (matching web-client) */
+    --host-bg: #11111b;
+    --host-surface: #1a1b26;
+    --host-royal: #5f57f5;
+    --host-royal-secondary: #38348f;
+    --host-blue-primary: #2563eb;
+    --host-blue-secondary: #1e40af;
+    --host-white: #ffffff;
+    --host-gray-muted: #64748b;
+    --host-gray-light: #f8fafc;
+
+    /* Tokyo Night colors */
+    --tokyo-cyan: #7dcfff;
+    --tokyo-green: #9ece6a;
+    --tokyo-yellow: #e0af68;
+    --tokyo-red: #f7768e;
+    --tokyo-border: #3b4261;
+    --tokyo-fg: #a9b1d6;
+    --tokyo-fg-muted: #6b7089;
+}
+
+/* Base Layout */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--host-bg);
+    color: var(--tokyo-fg);
+    line-height: 1.6;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.outer-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container {
+    background: var(--host-surface);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    width: 100%;
+    max-width: 1400px;
+    color: var(--tokyo-fg);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    padding: 1rem 0 2rem;
+    border-bottom: 2px solid var(--tokyo-border);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--host-royal);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: var(--tokyo-fg);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+header .server-description {
+    background: var(--host-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--tokyo-cyan);
+}
+
+header .server-description p {
+    margin-bottom: 0.75rem;
+}
+
+header .server-description p:last-child {
+    margin-bottom: 0;
+}
+
+/* Client Sections */
+.client-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.client-section h2 {
+    font-size: 1.75rem;
+    color: var(--tokyo-cyan);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.client-section h2::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--tokyo-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--tokyo-green);
+}
+
+.client-section .description {
+    color: var(--tokyo-fg);
+    font-size: 1rem;
+    line-height: 1.7;
+    padding: 0 0.5rem;
+}
+
+.client-section .description strong {
+    color: var(--tokyo-yellow);
+    font-weight: 600;
+}
+
+.client-section .features {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 1.5rem;
+    color: var(--tokyo-fg-muted);
+}
+
+.client-section .features li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.client-section .features li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--host-royal);
+}
+
+/* Iframe Container */
+.iframe-container {
+    background: var(--host-bg);
+    border: 2px solid var(--tokyo-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    height: 85vh;
+    min-height: 600px;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    background: var(--host-bg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .outer-container {
+        padding: 8px;
+    }
+
+    .container {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.75rem;
+    }
+
+    header p {
+        font-size: 0.95rem;
+    }
+
+    header .server-description {
+        padding: 1rem;
+    }
+
+    .client-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .client-section .description {
+        font-size: 0.9rem;
+    }
+
+    .iframe-container {
+        height: 70vh;
+        min-height: 500px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p,
+    header .server-description p {
+        font-size: 0.85rem;
+    }
+
+    .client-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .client-section .description,
+    .client-section .features {
+        font-size: 0.85rem;
+    }
+
+    .iframe-container {
+        height: 60vh;
+        min-height: 400px;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--host-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--tokyo-border);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--host-royal);
+}
