@@ -103,8 +103,35 @@ WebAssembly.instantiateStreaming(fetch('chess-client.wasm'), go.importObject)
         console.error('WASM load error:', err);
     });
 
+// Fit terminal to container size
+function fitTerminal() {
+    const container = document.getElementById('terminal');
+    if (!container) return;
+
+    // Get actual container dimensions
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+
+    // Calculate character dimensions based on fontSize (14px)
+    // For monospace fonts: width ≈ fontSize * 0.6, height ≈ fontSize * 1.2
+    const charWidth = 14 * 0.6;   // ~8.4px
+    const charHeight = 14 * 1.2;  // ~16.8px
+
+    const cols = Math.floor(containerWidth / charWidth);
+    const rows = Math.floor(containerHeight / charHeight);
+
+    // Only resize if dimensions are valid
+    if (cols > 0 && rows > 0) {
+        term.resize(cols, rows);
+    }
+}
+
+// Debounce resize events to avoid excessive recalculations
+let resizeTimeout;
 window.addEventListener('resize', () => {
-    const cols = Math.floor(window.innerWidth / 8);
-    const rows = Math.floor(window.innerHeight / 17);
-    term.resize(cols, rows);
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(fitTerminal, 100);
 });
+
+// Fit terminal initially after a short delay (allow DOM to settle)
+setTimeout(fitTerminal, 100);
