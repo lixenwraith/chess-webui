@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Web UI - Multi-Client Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="outer-container">
+        <div class="container">
+            <header>
+                <h1>Chess Web UI - Multi-Client Demo</h1>
+                <p>
+                    Explore two distinct client implementations for the same chess server backend.
+                    This demonstration showcases the flexibility and versatility of the chess engine API.
+                </p>
+                <div class="server-description">
+                    <p>
+                        <strong>About the Chess Server:</strong>
+                        The backend chess server provides a REST API for managing chess games with support for
+                        both human and computer players. It features a custom chess engine with configurable difficulty
+                        levels and search depths, move validation, game state management, and PGN export capabilities.
+                    </p>
+                    <p>
+                        The server exposes endpoints for creating games, making moves, undoing moves, and retrieving
+                        game state. Both clients below connect to the same server instance, demonstrating how different
+                        user interfaces can interact with a unified backend service.
+                    </p>
+                </div>
+            </header>
+
+            <section class="client-section">
+                <h2>Web Client</h2>
+                <div class="description">
+                    <p>
+                        <strong>Interactive JavaScript-based Chess Interface</strong> - A modern web application
+                        built with vanilla JavaScript, HTML5, and CSS3. This client provides a rich graphical
+                        interface with real-time game state updates and visual feedback.
+                    </p>
+                    <ul class="features">
+                        <li>Drag-and-drop piece movement with visual highlights</li>
+                        <li>Real-time server health monitoring and status indicators</li>
+                        <li>Move history display with PGN notation export</li>
+                        <li>Configurable game settings (player color, difficulty, search time)</li>
+                        <li>Custom FEN position support for non-standard starting positions</li>
+                        <li>Responsive design with mobile support</li>
+                        <li>Animated move feedback and checkmate indicators</li>
+                    </ul>
+                </div>
+                <div class="iframe-container">
+                    <iframe
+                        src="../web-client/index.html"
+                        title="Web Chess Client"
+                        sandbox="allow-same-origin allow-scripts allow-forms"
+                    ></iframe>
+                </div>
+            </section>
+
+            <section class="client-section">
+                <h2>WASM Terminal Client</h2>
+                <div class="description">
+                    <p>
+                        <strong>Command-line Interface Compiled to WebAssembly</strong> - A Go-based terminal
+                        client that provides a traditional CLI experience directly in the browser. The Go chess
+                        client is compiled to WASM and runs in an xterm.js terminal emulator.
+                    </p>
+                    <ul class="features">
+                        <li>Full terminal experience with xterm.js emulation</li>
+                        <li>Command-based interface (type "help" to see available commands)</li>
+                        <li>ASCII board rendering with ANSI color support</li>
+                        <li>Session management with persistent game state</li>
+                        <li>Support for authentication, game creation, and move execution</li>
+                        <li>Debug commands for API exploration</li>
+                        <li>Native Go performance through WebAssembly compilation</li>
+                    </ul>
+                    <p>
+                        <em>Try commands:</em> <code>help</code>, <code>new white 10 1000</code>,
+                        <code>move e2e4</code>, <code>board</code>
+                    </p>
+                </div>
+                <div class="iframe-container">
+                    <iframe
+                        src="../wasm-client/chess-client-wasm/index.html"
+                        title="WASM Terminal Chess Client"
+                        sandbox="allow-same-origin allow-scripts allow-forms"
+                    ></iframe>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
